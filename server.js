@@ -16,7 +16,7 @@ import jwt from 'jsonwebtoken';
 import User from './models/user.js';
 import Task from './models/Task.js';
 import authMiddleware from './middleware/auth.js';
-
+ 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
