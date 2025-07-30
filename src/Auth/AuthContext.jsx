@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 
 const AuthContext = createContext();
 
@@ -8,24 +8,23 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [loading, setLoading] = useState(true);
-  // const navigate = useNavigate();
+  
 
-  // Set axios defaults and fetch user data when token changes
-  // Beow useEffect used to automatically login the user after registeration 
+
   
  useEffect(() => {
   if (token) {
     localStorage.setItem('token', token);
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-    // Fetch user details
+
     axios.get('http://localhost:5000/api/user')
       .then(res => {
         setUser(res.data);
       })
       .catch(err => {
         console.error('Failed to fetch user:', err);
-        logout(); // Remove invalid token
+        logout(); 
       })
       .finally(() => setLoading(false));
   } else {
