@@ -13,7 +13,7 @@ function Register() {
   const handleSubmit = async (e) => {
   e.preventDefault();
   setError('');
-  console.log(name,email,password, 'This is the data we are Registering')
+  // console.log(name,email,password, 'This is the data we are Registering')
   const result = await register(name, email, password);
   navigate('/login')
   if (!result.success) {

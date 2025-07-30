@@ -100,12 +100,12 @@ const fetchData = async () => {
 // .then(data => console.log(data))
 // .catch(error => console.error('Error:', error));
 
-    console.log(tasksRes,'This is the leaderboard Res',token)
+    
 
     const leaderboardData = Array.isArray(tasksRes) 
       ? tasksRes 
       : [''];
-    console.log(leaderboardData,'Thisi the something expecxted');
+  
     
   const sortedUsers = leaderboardData.map(u => ({
   name: u.user?.name || 'Anonymous',  // Optional chaining for safety
@@ -132,7 +132,6 @@ const fetchData = async () => {
       return acc
     }, {})
 
-    console.log(tempData, 'This are the sorted users ')
     setUsers(sortedUsers);
     setTodayWinner(sortedUsers[0] || null);
     
@@ -220,11 +219,7 @@ const fetchData = async () => {
             <h1 className="text-3xl font-bold text-indigo-700">Bhajan Bank</h1>
             <p className="text-gray-600">A place to track your bhajan progress</p>
             <p className="text-gray-600">Last reset: {lastResetDate}</p>
-            <div className="bg-red-50 p-4 my-4">
-                  <h3 className="font-bold">Debug Info</h3>
-                  <pre>Users: {JSON.stringify(users, null, 2)}</pre>
-                  <pre>Today's Winner: {JSON.stringify(todayWinner, null, 2)}</pre>
-                </div>
+           
           </div>
           <button 
             onClick={logout}

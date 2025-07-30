@@ -20,8 +20,8 @@ function Login() {
     
     try {
       const result = await login(email, password);
-      console.log(email, password);
-      console.log(result);
+      // console.log(email, password);
+      // console.log(result);
       if (result.success) {
         // Redirect after successful login
         navigate('/data'); // Or your desired protected route

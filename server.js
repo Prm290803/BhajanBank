@@ -9,9 +9,9 @@ console.log('Environment Variables:', {
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import argon2 from 'argon2';
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+// import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import User from './models/user.js';
 import Task from './models/Task.js';
