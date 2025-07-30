@@ -1,9 +1,2 @@
 @import "tailwindcss";
 
-.Hed{
-  color:red;
-  font-weight: 300;
-  font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
-  font-style: bold;
-}
