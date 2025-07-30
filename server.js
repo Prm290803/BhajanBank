@@ -83,8 +83,8 @@ app.post('/api/register', async (req, res) => {
       name,
       email,
       // password: await argon2.hash(password)
-      password: await bcrypt.hash(password,10) 
-      // password: password
+      // password: await bcrypt.hash(password,10) 
+      password: password
     });
     console.log(user,'This is the user')
     await user.save();
