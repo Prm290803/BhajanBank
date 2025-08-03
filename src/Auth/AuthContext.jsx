@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token') || null);
+const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [loading, setLoading] = useState(true);
   
 
@@ -35,26 +35,42 @@ export function AuthProvider({ children }) {
   }
 }, [token]);
 
-
 const login = async (email, password) => {
-console.log(email, password);  
-try {
-  console.log('Here asre ......')
+  try {
     const res = await axios.post('http://localhost:5000/api/login', { email, password });
-    console.log(email, password,res); 
-    // Store token and user
+
+    // Save token to localStorage and state
     localStorage.setItem('token', res.data.token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
-    
+    setToken(res.data.token); // This will trigger useEffect
+
     return { success: true, user: res.data.user };
   } catch (err) {
     return {
-      
       success: false,
       message: err.response?.data?.message || 'Login failed'
     };
   }
 };
+
+// const login = async (email, password) => {
+// console.log(email, password);  
+// try {
+//   console.log('Here asre ......')
+//     const res = await axios.post('http://localhost:5000/api/login', { email, password });
+//     console.log(email, password,res); 
+//     // Store token and user
+//     localStorage.setItem('token', res.data.token);
+//     axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+    
+//     return { success: true, user: res.data.user };
+//   } catch (err) {
+//     return {
+      
+//       success: false,
+//       message: err.response?.data?.message || 'Login failed'
+//     };
+//   }
+// };
 
   const register = async (name, email, password) => {
   try {
